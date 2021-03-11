@@ -15,7 +15,7 @@ func main() {
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGQUIT, syscall.SIGTERM)
 
 	// Show buffer chan capabilities
-	gameChan := make(chan *db.Game)
+	gameChan := make(chan *db.Game, 5)
 	p := processor.NewGameProcessor(gameChan)
 	apiServer := api.NewApiServer(gameChan)
 
